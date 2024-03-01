@@ -16,9 +16,8 @@ public class combinationSum {
         int target = sc.nextInt();
 
 
-        combinationSum ob = new combinationSum();
-        List<List<Integer>> result1 = ob.combinationS(arr, target);
-        List<List<Integer>> result2 = ob.combinationSum2(arr, target);
+        List<List<Integer>> result1 = combinationS(arr, target);
+        List<List<Integer>> result2 = combinationSum2(arr, target);
 
         for (List<Integer> it : result1) {
             System.out.print(it);
