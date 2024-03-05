@@ -15,7 +15,7 @@ public class permutation {
         for (int i = 0; i < n; i++) arr[i] = sc.nextInt();
         System.out.println(Arrays.toString(arr));
         List<List<Integer>> ans;
-        ans = permut(arr);
+        ans = permut2(arr);
         for (List<Integer> it : ans) {
             for (Integer auto : it) {
                 System.out.print(auto + " ");
@@ -50,5 +50,35 @@ public class permutation {
                 freq[i] = false;
             }
         }
+    }
+
+
+    // type 2 with tc - n! * n and sc=> o(n) +n!
+
+    public static List<List<Integer>> permut2(int[] nums) {
+        List<List<Integer>> ans = new ArrayList<>();
+        permtation2(0, nums, ans);
+        return ans;
+    }
+
+    public static void permtation2(int ind, int[] a, List<List<Integer>> ans) {
+        if (ind == a.length) {
+            ArrayList<Integer> ds = new ArrayList<>();
+            for (int i = 0; i < a.length; i++) ds.add(a[i]);
+            ans.add(new ArrayList<>(ds));
+            return;
+        }
+
+        for (int i = ind; i < a.length; i++) {
+            swap(i, ind, a);
+            permtation2(ind + 1, a, ans);
+            swap(i, ind, a);
+        }
+    }
+
+    public static void swap(int i, int j, int[] arr) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
