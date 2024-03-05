@@ -8,11 +8,13 @@ import java.util.Scanner;
 public class permutation {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        System.out.println("enter the size:-");
         int n = sc.nextInt();
+
         int[] arr = new int[n];
         for (int i = 0; i < n; i++) arr[i] = sc.nextInt();
         System.out.println(Arrays.toString(arr));
-        List<List<Integer>> ans = new ArrayList<>();
+        List<List<Integer>> ans;
         ans = permut(arr);
         for (List<Integer> it : ans) {
             for (Integer auto : it) {
@@ -29,11 +31,11 @@ public class permutation {
         List<List<Integer>> ans = new ArrayList<>();
         boolean[] freq = new boolean[nums.length];
         ArrayList<Integer> ds = new ArrayList<>();
-        permutation(nums, freq, ans, ds);
+        permtation(nums, freq, ans, ds);
         return ans;
     }
 
-    public static void permutation(int[] nums, boolean[] freq, List<List<Integer>> ans, ArrayList ds) {
+    public static void permtation(int[] nums, boolean[] freq, List<List<Integer>> ans, ArrayList ds) {
         if (ds.size() == nums.length) {
             ans.add(new ArrayList<>(ds));
             return;
@@ -43,7 +45,7 @@ public class permutation {
             if (!freq[i]) {
                 freq[i] = true;
                 ds.add(nums[i]);
-                permutation(nums, freq, ans, ds);
+                permtation(nums, freq, ans, ds);
                 ds.remove(ds.size() - 1);
                 freq[i] = false;
             }
